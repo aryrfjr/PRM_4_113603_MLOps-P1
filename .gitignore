@@ -16,7 +16,8 @@ venv/
 .vscode/
 
 # Airflow folders (runtime artifacts)
-airflow/logs/
+airflow/logs/*
+!airflow/logs/.gitkeep
 airflow/plugins/__pycache__/
 airflow/__pycache__/
 
