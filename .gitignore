@@ -1,5 +1,36 @@
+# Python artifacts
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
 .venv/
+env/
+venv/
+
+# VS Code settings
 .vscode/
+
+# Airflow folders (runtime artifacts)
+airflow/logs/
+airflow/plugins/__pycache__/
+airflow/__pycache__/
+
+# Airflow SQLite DB (if used locally without Docker DB)
+airflow/airflow.db
+
+# Docker volumes and environment files
+postgres_data/
+*.env
+
+# Jupyter (if any)
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
 
