@@ -5,7 +5,7 @@ from airflow.operators.python import PythonOperator
 
 
 def say_hello():
-    print("✅ Hello, MLOps World from Airflow!")
+    print("Hello, MLOps World from Airflow!")
 
 
 default_args = {
