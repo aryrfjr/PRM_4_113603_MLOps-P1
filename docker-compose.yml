@@ -1,5 +1,6 @@
 services:
-  # PostgreSQL for Airflow and MLflow
+  # PostgreSQL database service for Airflow and MLflow
+  # Uses a public official image (no build needed)
   postgres:
     image: postgres:13
     environment:
@@ -16,7 +17,8 @@ services:
       interval: 10s
       retries: 5
 
-  # Airflow Webserver
+  # Airflow Webserver UI
+  # Uses the official Airflow image (no build needed)
   airflow-webserver:
     image: apache/airflow:2.8.1
     restart: always
@@ -36,6 +38,7 @@ services:
     command: webserver
 
   # Airflow Scheduler
+  # Uses the official Airflow image (no build needed)
   airflow-scheduler:
     image: apache/airflow:2.8.1
     restart: always
@@ -52,7 +55,8 @@ services:
       - ./airflow/logs:/opt/airflow/logs
     command: scheduler
 
-  # Airflow Init (DB migration + user setup)
+  # Airflow Init — runs DB migrations and creates the admin user
+  # Uses the official Airflow image (no build needed)
   airflow-init:
     image: apache/airflow:2.8.1
     depends_on:
@@ -75,9 +79,11 @@ services:
         --email admin@example.com"
 
   # MLflow Tracking Server
+  # Custom-built image (from ./mlflow_server) with explicit image name following the project naming standard
   mlflow:
     build:
       context: ./mlflow_server
+    image: aryjr/prm_4_113603_mlops-p1-mlflow:latest
     depends_on:
       - postgres
     ports:
@@ -95,14 +101,17 @@ services:
       --port 5000
 
   # MLflow Client Demo
+  # Custom-built image (from ./mlflow_client) with explicit image name following the project naming standard
   mlflow-client:
     build:
       context: ./mlflow_client
+    image: aryjr/prm_4_113603_mlops-p1-mlflow-client:latest
     depends_on:
       - mlflow
     environment:
       - MLFLOW_TRACKING_URI=http://mlflow:5000
     command: python mlflow_demo.py
 
+# Docker-managed persistent volume for PostgreSQL data
 volumes:
   postgres_data:
