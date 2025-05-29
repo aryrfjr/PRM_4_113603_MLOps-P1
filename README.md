@@ -94,20 +94,6 @@ The demo container runs `mlflow_demo.py` showing example MLflow tracking usage.
 
 ---
 
-## .gitignore Recommendations
-
-    pycache/
-    .pyc
-    .venv/
-    .vscode/
-    airflow/logs/
-    !airflow/logs/.gitkeep
-    mlruns/
-
-
-    
----
-
 ## Future Improvements
 
 - Automate Airflow user creation in the initialization process.  
@@ -116,8 +102,3 @@ The demo container runs `mlflow_demo.py` showing example MLflow tracking usage.
 - Add better healthchecks and service dependency management.  
 - Expand MLflow client demo for advanced usage patterns.
 
----
-
-## Contact
-
-For questions or suggestions, reach out to the repository maintainer.
