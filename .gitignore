@@ -1,37 +1,20 @@
 # Python artifacts
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-*.egg-info/
-dist/
-build/
-
-# Virtual environments
 .venv/
-env/
-venv/
 
-# VS Code settings
+# VS Code
 .vscode/
 
-# Airflow folders (runtime artifacts)
+# Airflow logs (keep folder structure)
 airflow/logs/*
 !airflow/logs/.gitkeep
-airflow/plugins/__pycache__/
-airflow/__pycache__/
 
-# Airflow SQLite DB (if used locally without Docker DB)
-airflow/airflow.db
+# MLflow artifacts (optional, if you don't want to track models)
+mlflow/artifacts/
 
-# Docker volumes and environment files
+# PostgreSQL volume (optional, caution if you want persistence)
 postgres_data/
-*.env
 
-# Jupyter (if any)
-.ipynb_checkpoints/
-
-# System files
-.DS_Store
-Thumbs.db
-
+# SQLite leftovers (if accidentally created)
+*.sqlite3
