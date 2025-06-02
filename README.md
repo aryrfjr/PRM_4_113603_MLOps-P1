@@ -46,6 +46,7 @@ All services are containerized with Docker Compose for reproducibility.
 
 - Runs `mlflow_demo.py` from `./mlflow_client`
 - Connects to MLflow server via `MLFLOW_TRACKING_URI=http://mlflow:5000`
+- It does nothing but mimic an **Airflow DAG** with a **DAG Task** that uses **MLflow** to log dummy parameters and outcomes from a ML model training process.
 
 ---
 
