@@ -10,10 +10,10 @@ __pycache__/
 airflow/logs/*
 !airflow/logs/.gitkeep
 
-# MLflow artifacts (optional, if you don't want to track models)
+# MLflow artifacts (tracking models)
 mlflow/artifacts/
 
-# PostgreSQL volume (optional, caution if you want persistence)
+# PostgreSQL volume
 postgres_data/
 
 # SQLite leftovers (if accidentally created)

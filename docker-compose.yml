@@ -30,6 +30,8 @@ services:
       AIRFLOW__CORE__FERNET_KEY: ''
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
       AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
+      AIRFLOW__API__AUTH_BACKEND: airflow.api.auth.backend.basic_auth
     ports:
       - "8080:8080"
     volumes:
@@ -50,6 +52,7 @@ services:
       AIRFLOW__CORE__FERNET_KEY: ''
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
       AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__API__AUTH_BACKEND: airflow.api.auth.backend.basic_auth
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs
@@ -111,6 +114,14 @@ services:
     environment:
       - MLFLOW_TRACKING_URI=http://mlflow:5000
     command: python mlflow_demo.py
+
+  # Streamlit App Demo
+  streamlit:
+    build: ./streamlit_app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./streamlit_app:/app
 
 # Docker-managed persistent volume for PostgreSQL data
 volumes:
